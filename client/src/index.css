@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0b0f1e;
+  --color-surface: rgba(255, 255, 255, 0.06);
+  --color-ink: #f8fafc;
+  --color-brand: #f59e0b;
+  --color-brand-2: #dc2626;
+  --color-accent: #f43f5e;
+  --color-accent-coral: #f43f5e;
+  --color-accent-amber: #fbbf24;
+  --color-accent-emerald: #34d399;
+  --color-risk-dropout: #f43f5e;
+  --color-risk-enrolled: #fbbf24;
+  --color-risk-graduate: #34d399;
+  --font-display: "Orbitron";
+  --font-body: "Sora";
+  --font-mono: "JetBrains Mono";
+}
+
+:root {
+  font-family: var(--font-body), sans-serif;
+  color: var(--color-ink);
+  background-color: var(--color-background);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-ink);
+  background-image:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(59, 130, 246, 0.18),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(139, 92, 246, 0.16),
+      transparent 23%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(52, 211, 153, 0.12),
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 107, 107, 0.1),
+      transparent 22%
+    );
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.12) 1px,
+    transparent 1px
+  );
+  background-size: 26px 26px;
+  opacity: 0.08;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+}
+
+#root {
+  min-height: 100vh;
+}

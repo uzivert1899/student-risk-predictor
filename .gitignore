@@ -1,0 +1,39 @@
+# Python
+venv/
+.env
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+
+# Local vector DB
+chroma_db/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor backups
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Others
+coverage/
+.vscode/
+.idea/
