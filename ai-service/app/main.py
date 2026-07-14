@@ -10,7 +10,7 @@ from fastapi import FastAPI
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import TextLoader
 from langchain_groq import ChatGroq
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pydantic import BaseModel
 
@@ -162,7 +162,7 @@ def initialize_policy_vector_store() -> None:
     chunks = splitter.split_documents(documents)
 
     # Embed and persist the chunks to a local Chroma vector store.
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
     CHROMA_DB_DIR.mkdir(parents=True, exist_ok=True)
     Chroma.from_documents(
         documents=chunks,
@@ -250,7 +250,7 @@ def explain(request: ExplanationRequest) -> ExplanationResponse:
     )
 
     # Retrieve the most relevant policy chunks from the local Chroma vector store, while avoiding duplicates.
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
     vector_store = Chroma(
         persist_directory=str(CHROMA_DB_DIR),
         embedding_function=embeddings,
