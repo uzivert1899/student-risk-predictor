@@ -1,6 +1,8 @@
 import axios from "axios";
 import { Activity, LayoutDashboard, RotateCcw, Users } from "lucide-react";
 
+const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { id: "students", label: "Students", icon: Users },
@@ -15,9 +17,7 @@ function Sidebar({ activeTab, onTabChange, onResetPredictions }) {
     if (!confirmed) return;
 
     try {
-      await axios.delete(
-        "http://localhost:5000/api/students/reset-predictions",
-      );
+      await axios.delete(`${apiBaseUrl}/api/students/reset-predictions`);
       await onResetPredictions();
     } catch (error) {
       console.error("Failed to reset prediction histories", error);

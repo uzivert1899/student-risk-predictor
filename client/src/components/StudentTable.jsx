@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Send, X, ChevronDown } from "lucide-react";
 
+const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const badgeClasses = {
   Dropout:
     "border border-[#F43F5E]/30 bg-[#F43F5E]/10 text-[#F43F5E] shadow-[0_0_20px_rgba(244,63,94,0.12)]",
@@ -31,7 +33,7 @@ function StudentTable({ students = [], loading = false, onUpdatePrediction }) {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/students/${student._id}/predict`,
+        `${apiBaseUrl}/api/students/${student._id}/predict`,
       );
       const result = response.data;
 
@@ -90,7 +92,7 @@ function StudentTable({ students = [], loading = false, onUpdatePrediction }) {
       };
 
       const response = await axios.post(
-        `http://localhost:5000/api/students/${selectedStudent.student._id}/explain`,
+        `${apiBaseUrl}/api/students/${selectedStudent.student._id}/explain`,
         payload,
       );
 

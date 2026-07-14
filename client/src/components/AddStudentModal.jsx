@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import { X } from "lucide-react";
 
+const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 export default function AddStudentModal({ open, onClose, onAdd }) {
   const [form, setForm] = useState({
     name: "",
@@ -64,7 +66,7 @@ export default function AddStudentModal({ open, onClose, onAdd }) {
         debtor: form.debtor ? 1 : 0,
       };
 
-      await axios.post("http://localhost:5000/api/students", payload);
+      await axios.post(`${apiBaseUrl}/api/students`, payload);
       // reset form
       setForm({
         name: "",

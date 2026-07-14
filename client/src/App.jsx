@@ -7,6 +7,8 @@ import StatCard from "./components/StatCard";
 import StudentTable from "./components/StudentTable";
 import AddStudentModal from "./components/AddStudentModal";
 
+const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function getPredictionCounts(students) {
   const counts = { dropout: 0, enrolled: 0, graduate: 0, notChecked: 0 };
   const total = students.length;
@@ -58,7 +60,7 @@ function App() {
   const fetchStudents = async () => {
     setLoadingStudents(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/students");
+      const response = await axios.get(`${apiBaseUrl}/api/students`);
       const data = response.data || [];
       setStudents(data);
       const { counts, total } = getPredictionCounts(data);
